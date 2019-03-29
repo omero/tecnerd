@@ -88,7 +88,10 @@ const Index = () => (
             bg="linear-gradient(to right, #662D8C 0%, #ED1E79 100%)"
           >
             <Avatar src={omar} alt="John Doe" />
-            <p>DepOps</p>
+            <p>
+              Escribo codigo y juego videojuegos. Productos en Desarrollador web. Amante de la música, Open Source y
+              DevOps. Co-mantenedor drupalconsole.
+            </p>
           </ProjectCard>
           <ProjectCard
             title="Jorge Atempa Camacho"
