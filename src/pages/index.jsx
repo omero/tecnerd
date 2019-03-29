@@ -20,6 +20,8 @@ import Contact from '../views/Contact'
 import avatar from '../images/avatar.jpg'
 import jesus from '../images/jesus.jpg'
 import omar from '../images/omar.jpg'
+import atempa from '../images/atempa.jpg'
+import miguel from '../images/miguel.jpg'
 
 const ProjectsWrapper = styled.div`
   ${tw`flex flex-wrap justify-between mt-8`};
@@ -62,7 +64,7 @@ const Footer = styled.footer`
 const Index = () => (
   <>
     <Layout />
-    <Parallax pages={5}>
+    <Parallax pages={3}>
       <Hero offset={0}>
         <BigTitle>
           Hola, <br /> Bienvenidos a TecNerd.
@@ -89,23 +91,25 @@ const Index = () => (
             <p>DepOps</p>
           </ProjectCard>
           <ProjectCard
-            title="Tomb Raider"
+            title="Jorge Atempa Camacho"
             link="https://www.behance.net/gallery/43907099/Tomb-Raider"
             bg="linear-gradient(to right, #009245 0%, #FCEE21 100%)"
           >
-            Recreation of a Tomb Raider Wallpaper (Fan Art)
+             <Avatar src={atempa} alt="John Doe" />
+            <p>Desarrollador en Vue js, php, C# y Flutter</p>
           </ProjectCard>
           <ProjectCard
-            title="Eagle"
+            title="Miguel Ángel Elizondo Aguilera"
             link="https://www.behance.net/gallery/38068151/Eagle"
             bg="linear-gradient(to right, #D585FF 0%, #00FFEE 100%)"
           >
-            A fantasy image manipulation relocating the habitat of wild animals.
+            <Avatar src={miguel} alt="John Doe" />
+            <p>Apacionado en la programacion en javascrpit Master en Vuejs</p>
           </ProjectCard>
         </ProjectsWrapper>
       </Projects>
       <About offset={3}>
-        <Title>About</Title>
+        {/* <Title>About</Title>
         <AboutHero>
           <Avatar src={avatar} alt="John Doe" />
           <AboutSub>
@@ -119,22 +123,22 @@ const Index = () => (
           make me your campaign manager. I was born for politics. I have great hair and I love lying. Captain? The kids
           want to know where Paulie the Pigeon is. I told them he got sucked up into an airplane engine, is that all
           right?
-        </AboutDesc>
+        </AboutDesc> */}
       </About>
       <Contact offset={4}>
-        <Inner>
+        {/* <Inner>
           <Title>Get in touch</Title>
           <ContactText>
             Say <a href="mailto:plizNoSp4m@domain.tld">Hi</a> or find me on other platforms:{' '}
             <a href="https://dribbble.com/LekoArts">Dribbble</a> &{' '}
             <a href="https://www.instagram.com/lekoarts.de/">Instagram</a>
           </ContactText>
-        </Inner>
-        <Footer>
+        </Inner> */}
+        {/* <Footer>
           &copy; 2019 by Gatsby Starter Portfolio Cara.{' '}
           <a href="https://github.com/LekoArts/gatsby-starter-portfolio-cara">Github Repository</a>. Made by{' '}
           <a href="https://www.lekoarts.de">LekoArts</a>.
-        </Footer>
+        </Footer> */}
       </Contact>
     </Parallax>
   </>
