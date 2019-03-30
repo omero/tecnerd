@@ -1,0 +1,20 @@
+- id: jmolivas
+  bio: Head of Products at @weKnowInc. Creator and project lead of @drupalconsole.
+  name: Jesus Manuel Olivas
+  twitter: jmolivas
+  website: https://jmolivas.com
+  topic: Building a Modern Web Application in the Cloud
+  date: 2019-04-05 10:00:00
+  avatar: ../images/avatar/jmolivas.jpg
+- id: jorgeatempa
+  bio: Entusiasta de la programación, en constante aprendizaje. Programador en Tagwizz y Profesor de asignatura en el Tecnológico de Mexicali.
+  name: Jorge Atempa
+  twitter: atempa09
+  website: https://jatempa.github.io/atempa-blog/
+  avatar: ../images/avatar/jorgeatempa.jpg
+- id: omers
+  bio: Entusiasta de la programación, en constante aprendizaje. Programador en Tagwizz y Profesor de asignatura en el Tecnológico de Mexicali.
+  name: Omar Aguirre
+  twitter: atempa09
+  website: https://jatempa.github.io/atempa-blog/
+  avatar: ../images/avatar/omers.jpg
