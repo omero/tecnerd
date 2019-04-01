@@ -17,12 +17,6 @@ import Projects from '../views/Projects'
 import About from '../views/About'
 import Contact from '../views/Contact'
 
-// import avatar from '../images/avatar.jpg'
-// import jmolivas from '../images/jmolivas.jpg'
-// import omers from '../images/omers.jpg'
-// import jorgeatempa from '../images/jorgeatempa.jpg'
-// import miguel from '../images/miguel.jpg'
-
 import Img from "gatsby-image"
 
 const ProjectsWrapper = styled.div`
@@ -62,84 +56,53 @@ const ContactText = styled.p`
 const Footer = styled.footer`
   ${tw`text-center text-grey absolute pin-b p-6 font-sans text-md lg:text-lg`};
 `
-
-// const Index = (data) => (
 class Index extends React.Component {
   render() {
     const { data } = this.props
-    const speakers =  data.allSpeakersYaml.nodes;
+    const speakers = data.allGoogleSpreadsheetSheet1.edges;
     return (
       <>
         <Layout />
-        <Parallax pages={3}>
+        <Parallax pages={10}>
           <Hero offset={0}>
             <BigTitle>
               Hola, <br /> Bienvenidos a TecNerd.
         </BigTitle>
             <Subtitle>Conociendo las nuevas tendencias tecnologicas</Subtitle>
           </Hero>
-  
-          <Projects offset={1}>
+
+          <Projects offset={0}>
             <Title>Expositores</Title>
             <ProjectsWrapper>
-            {speakers.map(( speaker ) => {
-              return (
-                <ProjectCard
-                title={speaker.name}
-                link={speaker.website}
-                bg="linear-gradient(to right, #D4145A 0%, #FBB03B 100%)"
-              >
-                <Img
-                  fluid={speaker.avatar.childImageSharp.fluid}
-                  alt={speaker.name}
-                  imgStyle={{
-                    borderRadius: `50%`,
-                  }}
-                />
+              {speakers.map(({ node }) => {
+                const speaker = node;
+                console.log(speaker.avatar);
+                return (
+                  <ProjectCard
+                    key={speaker.id}
+                    title={speaker.name}
+                    link={speaker.website}
+                    bg="linear-gradient(to right, #D4145A 0%, #FBB03B 100%)"
+                  >
+                    <Img
+                      fluid={speaker.childrenFile[0].childImageSharp.fluid}
+                      alt={speaker.name}
+                      imgStyle={{
+                        borderRadius: `50%`,
+                      }}
+                    />
 
-                <center><h2 style={{fontSize:'2.5em'}}>{speaker.name}</h2></center>
+                    <center><h2 style={{ fontSize: '2.5em' }}>{speaker.name}</h2></center>
 
-                <p>{speaker.bio}</p>
-                <p><strong>Tema:</strong> {speaker.topic}</p>
-                <p><strong>Fecha:</strong> {speaker.date}</p>
-              </ProjectCard>
-              )
-          })}
+                    <p>{speaker.bio}</p>
+                    <p><strong>Tema:</strong> {speaker.topic}</p>
+                    <p><strong>Fecha:</strong> {speaker.date}</p>
+                  </ProjectCard>
+                )
+              })}
 
             </ProjectsWrapper>
           </Projects>
-          <About offset={3}>
-            {/* <Title>About</Title>
-        <AboutHero>
-          <Avatar src={avatar} alt="John Doe" />
-          <AboutSub>
-            The English language can not fully capture the depth and complexity of my thoughts. So I'm incorporating
-            Emoji into my speech to better express myself. Winky face.
-          </AboutSub>
-        </AboutHero>
-        <AboutDesc>
-          You know the way you feel when you see a picture of two otters holding hands? That's how you're gonna feel
-          every day. My mother cried the day I was born because she knew she’d never be prettier than me. You should
-          make me your campaign manager. I was born for politics. I have great hair and I love lying. Captain? The kids
-          want to know where Paulie the Pigeon is. I told them he got sucked up into an airplane engine, is that all
-          right?
-        </AboutDesc> */}
-          </About>
-          <Contact offset={4}>
-            {/* <Inner>
-          <Title>Get in touch</Title>
-          <ContactText>
-            Say <a href="mailto:plizNoSp4m@domain.tld">Hi</a> or find me on other platforms:{' '}
-            <a href="https://dribbble.com/LekoArts">Dribbble</a> &{' '}
-            <a href="https://www.instagram.com/lekoarts.de/">Instagram</a>
-          </ContactText>
-        </Inner> */}
-            {/* <Footer>
-          &copy; 2019 by Gatsby Starter Portfolio Cara.{' '}
-          <a href="https://github.com/LekoArts/gatsby-starter-portfolio-cara">Github Repository</a>. Made by{' '}
-          <a href="https://www.lekoarts.de">LekoArts</a>.
-        </Footer> */}
-          </Contact>
         </Parallax>
       </>
     )
@@ -150,19 +113,23 @@ export default Index
 
 export const pageQuery = graphql`
   query {
-    allSpeakersYaml {
-      nodes {
-        id
-        name
-        bio
-        twitter
-        website
-        topic
-        date(formatString: "LLLL")
-        avatar {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
+    allGoogleSpreadsheetSheet1(
+     sort: { fields: [date], order: ASC }
+  ) {
+      edges {
+        node {
+          id
+          name
+          bio
+          twitter
+          website
+          topic
+          date(formatString: "LLLL")
+          childrenFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
         }
