@@ -2,6 +2,12 @@ const config = require('./config/website')
 
 const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
 
+const dotenv = require('dotenv');
+
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV}`
+});
+
 module.exports = {
   /* General Information */
   siteMetadata: {
@@ -32,6 +38,15 @@ module.exports = {
         trackingId: config.googleAnalyticsID,
       },
     },
+    {
+      resolve: 'gatsby-source-google-spreadsheet',
+      options: {
+          spreadsheetId: '1BujMhjqqlo51HXFE7YyWf11579ADEv-aQRV_QerfzyE',
+          worksheetTitle: 'sheet1',
+          typePrefix: "GoogleSpreadsheet",
+          credentials: JSON.parse(`${process.env.GOOGLE_SERVICE_ACCOUNT_CREDENTIALS}`),
+      }
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
@@ -59,7 +74,7 @@ module.exports = {
       },
     },
     /* Must be placed at the end */
-    'gatsby-plugin-offline',
+    // 'gatsby-plugin-offline',
     'gatsby-plugin-netlify',
   ],
 }
